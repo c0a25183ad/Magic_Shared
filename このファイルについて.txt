@@ -1,0 +1,43 @@
+#### 概要
+- このファイルは「MAGIC」プロジェクトのコードの実行方法について説明しています。
+- 主なスクリプトには、main.pyとtest.py（詳細な解説付き）が含まれます。
+- 機能としては、Webカメラを使用して手のポーズ（グー、チョキ、パー）を判定します。
+
+#### 必要な環境設定
+- **Pythonのバージョン**: 3.10.11
+  - インストールしていない場合は、https://www.python.org/downloads/ からダウンロードしてください。
+- **仮想環境の作成**:
+  - コマンドプロンプトまたはPowerShellでプロジェクトフォルダに移動します。
+  - コマンド: python -m venv venv
+  - 有効化 (Windows): & "C:\Users\Takayama Ryuji\Desktop\Magic\venv\Scripts\activate"
+  - 確認: (venv) が表示されます。
+
+#### 依存関係のインストール
+- コマンド: pip install -r requirements.txt
+- requirements.txt が存在しない場合は、開発者に連絡してください。
+
+#### コードの実行方法
+- **VSCodeを使用**:
+  - VSCodeでプロジェクトフォルダを開きます。
+  - 仮想環境を有効化します。
+  - test.py または main.py を開き、右上の「実行」ボタン (▷) をクリックします。
+- **コマンドラインを使用**:
+  - 仮想環境を有効にした後:
+    - test.py: & "C:\Users\Takayama Ryuji\Desktop\Magic\venv\Scripts\python.exe" "C:\Users\Takayama Ryuji\Desktop\Magic\test.py"
+    - main.py: & "C:\Users\Takayama Ryuji\Desktop\Magic\venv\Scripts\python.exe" "C:\Users\Takayama Ryuji\Desktop\Magic\main.py"
+- **終了方法**: Webカメラウィンドウで q キーを押します。
+
+#### 機能概要
+- **Webカメラの起動**: スクリプトを実行すると自動的に起動します。
+- **手のポーズ判定**: グー、チョキ、パーを認識します。
+- **表示**: 画面にテキストを表示し、コンソールにはログが出力されます。
+- **詳細解説**: test.py に最新の修正が反映されています。コードの詳細についてはコメントまたは開発者に問い合わせてください。
+
+#### 注意事項
+- **Webカメラが起動しない場合**:
+  - 接続を確認してください。
+  - 他のアプリが使用中でないか確認してください。
+  - Windows設定 > プライバシー > カメラで権限を付与してください。
+- **認識精度が低い場合**:
+  - 訓練画像 (rock.jpg, scissors.jpg, paper.jpg) を追加し、テンプレートを再生成してください。
+- パスなどは自分のパソコンに合わせる必要があります。
