@@ -34,9 +34,9 @@ fish_img = None  # 現在選択されている魚の画像
 
 # 魚のデザイン選択機能
 def load_fish_designs():
-    """
-    魚のデザインフォルダから利用可能な魚の画像を読み込む
-    """
+
+    # 魚のデザインフォルダから利用可能な魚の画像を読み込む
+
     fish_designs = {}
     
     # デフォルトの魚画像を追加
@@ -108,9 +108,8 @@ def select_fish_design(fish_designs):
             return FISH_IMAGE_PATH if os.path.exists(FISH_IMAGE_PATH) else None
 
 def load_selected_fish_image(fish_path):
-    """
-    選択された魚の画像を読み込む
-    """
+    
+
     if fish_path and os.path.exists(fish_path):
         img = cv2.imread(fish_path, cv2.IMREAD_UNCHANGED)
         if img is not None:
@@ -140,10 +139,10 @@ hand_landmarks_histories = {}
 
 # 移動平均フィルタを適用する関数
 def apply_moving_average_filter(landmarks_history, current_landmarks):
-    """
-    ランドマーク履歴に移動平均フィルタを適用して平滑化する
-    座標値のみを平滑化して返す
-    """
+
+    # ランドマーク履歴に移動平均フィルタを適用して平滑化する
+    # 座標値のみを平滑化して返す
+
     try:
         if len(landmarks_history) < 2:
             # 履歴が少ない場合は現在の値をそのまま返す
@@ -200,6 +199,7 @@ def weighted_cosine_similarity(a, b, weights=None):
 # スケルトン（手のランドマーク）抽出関数
 # 戻り値: 検出された手のデータのリストと、注釈付きフレーム
 # detected_hands_dataの各要素は (handpose_array, raw_landmarks_object, handedness_label) のタプル
+
 def extract_skeleton(frame):
     img_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     results = hands.process(img_rgb)  # type: ignore
