@@ -200,7 +200,7 @@ def weighted_cosine_similarity(a, b, weights=None):
 # スケルトン（手のランドマーク）抽出関数
 # 戻り値: 検出された手のデータのリストと、注釈付きフレーム
 # detected_hands_dataの各要素は (handpose_array, raw_landmarks_object, handedness_label) のタプル
-def 1leton(frame):
+def extract_skeleton(frame):
     img_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     results = hands.process(img_rgb)  # type: ignore
     annotated_frame = frame.copy()
