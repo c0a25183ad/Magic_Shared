@@ -10,6 +10,7 @@ import pandas as pd
 from sklearn.metrics import accuracy_score
 import time
 from collections import deque
+from dotenv import load_dotenv
 
 # MediaPipeの初期化
 # mp_hands を使用して手の検出に特化
@@ -28,8 +29,12 @@ hands = mp_hands.Hands( # Handsオブジェクトを初期化
 # 魚の画像と位置関連の変数
 # 魚の画像を絶対パスで読み込みq1
 # ★★★重要★★★ このパスはあなたの環境に合わせて正確に修正してください
+#envファイルを変更してください
+load_dotenv()
+
+
 FISH_IMAGES_DIR = "fish_designs"  # 魚のデザインフォルダ
-FISH_IMAGE_PATH = "C:/Users/Admin/Downloads/Magic_Shared/Magic_Shared/UploadedImage5.png"  # デフォルトの魚画像
+FISH_IMAGE_PATH =  os.getenv("FISH_IMAGE_PATH") # デフォルトの魚画像
 fish_img = None  # 現在選択されている魚の画像
 
 # 魚のデザイン選択機能
@@ -600,7 +605,7 @@ def predict_pose_from_video(source, model=None, le=None):
 def main():
     # 作業ディレクトリを指定
     # ★★★重要★★★ このパスはあなたの環境に合わせて正確に修正してください
-    base_dir = r"C:\Users\Admin\Downloads\Magic_Shared\Magic_Shared" # 例: 日本語パスを削除した場所
+    base_dir = os.getenv("base_dir") # 例: 日本語パスを削除した場所
     os.chdir(base_dir)
     print(f"Current working directory set to: {os.getcwd()}")
 
