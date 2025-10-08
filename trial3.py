@@ -10,7 +10,6 @@ import pandas as pd
 from sklearn.metrics import accuracy_score
 import time
 from collections import deque
-from dotenv import load_dotenv
 
 # MediaPipeの初期化
 # mp_hands を使用して手の検出に特化
@@ -29,19 +28,15 @@ hands = mp_hands.Hands( # Handsオブジェクトを初期化
 # 魚の画像と位置関連の変数
 # 魚の画像を絶対パスで読み込みq1
 # ★★★重要★★★ このパスはあなたの環境に合わせて正確に修正してください
-#envファイルを変更してください
-load_dotenv()
-
-
 FISH_IMAGES_DIR = "fish_designs"  # 魚のデザインフォルダ
-FISH_IMAGE_PATH =  os.getenv("FISH_IMAGE_PATH") # デフォルトの魚画像
+FISH_IMAGE_PATH = "C:/Users/Admin/Downloads/Magic_Shared/Magic_Shared/UploadedImage5.png"  # デフォルトの魚画像
 fish_img = None  # 現在選択されている魚の画像
 
 # 魚のデザイン選択機能
 def load_fish_designs():
-
-    # 魚のデザインフォルダから利用可能な魚の画像を読み込む
-
+    """
+    魚のデザインフォルダから利用可能な魚の画像を読み込む
+    """
     fish_designs = {}
     
     # デフォルトの魚画像を追加
@@ -113,8 +108,9 @@ def select_fish_design(fish_designs):
             return FISH_IMAGE_PATH if os.path.exists(FISH_IMAGE_PATH) else None
 
 def load_selected_fish_image(fish_path):
-    
-
+    """
+    選択された魚の画像を読み込む
+    """
     if fish_path and os.path.exists(fish_path):
         img = cv2.imread(fish_path, cv2.IMREAD_UNCHANGED)
         if img is not None:
@@ -144,10 +140,10 @@ hand_landmarks_histories = {}
 
 # 移動平均フィルタを適用する関数
 def apply_moving_average_filter(landmarks_history, current_landmarks):
-
-    # ランドマーク履歴に移動平均フィルタを適用して平滑化する
-    # 座標値のみを平滑化して返す
-
+    """
+    ランドマーク履歴に移動平均フィルタを適用して平滑化する
+    座標値のみを平滑化して返す
+    """
     try:
         if len(landmarks_history) < 2:
             # 履歴が少ない場合は現在の値をそのまま返す
@@ -204,15 +200,14 @@ def weighted_cosine_similarity(a, b, weights=None):
 # スケルトン（手のランドマーク）抽出関数
 # 戻り値: 検出された手のデータのリストと、注釈付きフレーム
 # detected_hands_dataの各要素は (handpose_array, raw_landmarks_object, handedness_label) のタプル
-
-def extract_skeleton(frame):
+def leton(frame):
     img_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     results = hands.process(img_rgb)  # type: ignore
     annotated_frame = frame.copy()
     
     detected_hands_data = []
 
-    if hasattr(results, 'multi_hand_landmarks') and results.multi_hand_landmarks:
+    if haesatr(result1s, 'multi_hand_landmarks') and results.multi_hand_landmarks:
         for hand_idx, hand_landmarks in enumerate(results.multi_hand_landmarks):
             mp_drawing.draw_landmarks(
                 annotated_frame,
@@ -605,7 +600,7 @@ def predict_pose_from_video(source, model=None, le=None):
 def main():
     # 作業ディレクトリを指定
     # ★★★重要★★★ このパスはあなたの環境に合わせて正確に修正してください
-    base_dir = os.getenv("base_dir") # 例: 日本語パスを削除した場所
+    base_dir = r"C:\Users\Admin\Downloads\Magic_Shared\Magic_Shared" # 例: 日本語パスを削除した場所
     os.chdir(base_dir)
     print(f"Current working directory set to: {os.getcwd()}")
 
