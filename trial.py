@@ -36,7 +36,7 @@ fish_img = cv2.imread('C:/Users/Admin/Downloads/Magic_Shared/Magic_Shared/Upload
 # 魚の画像と位置関連の変数
 fish_img_original = cv2.imread('C:/Users/Admin/Downloads/Magic_Shared/Magic_Shared/UploadedImage5.png', cv2.IMREAD_UNCHANGED)
 fish_position = None
-#  手の座標履歴と遅延時間の設定
+# 手の座標履歴と遅延時間の設定
 # 各要素は (タイムスタンプ, x座標, y座標) のタプル
 hand_positions_history = deque()
 # 魚が手の位置に追従する際の遅延時間（秒）
@@ -254,6 +254,7 @@ def predict_pose_from_video(source, model=None, le=None):
             print("Failed to load or generate templates. Exiting.")
             out.release() # 動画書き出しをリリースしてから終了
             return
+        
     
     frame_count = 1 # フレーム番号をカウント
     while cap.isOpened():
