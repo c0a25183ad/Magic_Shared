@@ -59,10 +59,10 @@ FISH_DIR = os.path.join(BASE_DIR, "fish_designs")
 
 CAM_WIDTH, CAM_HEIGHT = 1280, 720   # カメラ取得解像度（この座標系で全処理を行う）
 FISH_LAG_SECONDS = 0.7              # 魚が追従する遅延（秒）
-MOVING_AVERAGE_WINDOW = 5           # 手座標の移動平均フレーム数（大きいほど滑らか）
+MOVING_AVERAGE_WINDOW = 10           # 手座標の移動平均フレーム数（大きいほど滑らか）
 DWELL_TIME = 1.5                    # サムネイルにこの秒数重ねると選択
 PAPER_THRESHOLD = 0.13             # 親指-小指距離がこれを超えたら「パー」とみなす
-MAX_HANDS = 2                       # 同時に追従させる手の数（2 なら魚も2匹）
+MAX_HANDS =5                    # 同時に追従させる手の数（2 なら魚も2匹）
 
 WINDOW_NAME = "Fish Demo"
 
